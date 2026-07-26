@@ -1,0 +1,9 @@
+[wsl2]
+memory=8GB # Giới hạn RAM tối đa (Khuyên dùng: 50% RAM vật lý hoặc fix cứng 8GB/16GB)
+processors=4 # Giới hạn số core CPU
+swap=2GB
+localhostForwarding=true
+
+[experimental]
+autoMemoryReclaim=dropcache # Tính năng mới giúp WSL tự trả RAM lại cho Windows
+sparseVhd=true # Tự động thu nhỏ file .vhdx khi xóa data trong Linux
