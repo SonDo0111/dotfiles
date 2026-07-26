@@ -1,0 +1,13 @@
+[include]
+    # Lưu ý: Đường dẫn tương đối tính từ thư mục chứa file .gitconfig gọi nó
+    path = ./.gitconfig-shared 
+
+[credential "https://github.com"]
+    # Dòng trống này RẤT QUAN TRỌNG: Nó xóa bỏ các helper mặc định của hệ thống (như GCM trên Windows)
+    helper = 
+    # Gọi gh từ biến PATH (Chạy được trên cả Windows và Linux)
+    helper = !gh auth git-credential
+
+[credential "https://gist.github.com"]
+    helper = 
+    helper = !gh auth git-credential
