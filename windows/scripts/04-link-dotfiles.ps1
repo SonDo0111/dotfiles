@@ -45,7 +45,8 @@ function Set-DotfileLink {
 Write-Host "== [04] Git / PowerShell / Cargo ==" -ForegroundColor Cyan
 Set-DotfileLink -LinkPath "$HOME\.gitconfig"        -TargetPath "$repoRoot\git\.gitconfig-windows"
 Set-DotfileLink -LinkPath $PROFILE                   -TargetPath "$repoRoot\powershell\Microsoft.PowerShell_profile.ps1"
-Set-DotfileLink -LinkPath "$HOME\.cargo\config.toml" -TargetPath "$repoRoot\cargo\config.toml"
+Set-DotfileLink -LinkPath "$HOME\.wslconfig"        -TargetPath "$repoRoot\WSL\.wslconfig"
+# Set-DotfileLink -LinkPath "$HOME\.cargo\config.toml" -TargetPath "$repoRoot\cargo\config.toml"
 
 Write-Host "== [04] Windows Terminal ==" -ForegroundColor Cyan
 $wtStorePath    = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
