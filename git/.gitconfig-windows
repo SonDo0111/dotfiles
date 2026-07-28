@@ -13,3 +13,15 @@
     helper = !gh auth git-credential
 [safe]
 	directory = D:/Workspace/dotfiles
+[user]
+	name = SonDo0111
+	email = thea73092@gmail.com
+[init]
+	defaultbranch = main
+[gui]
+	recentrepo = D:/Workspace/dotfiles
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

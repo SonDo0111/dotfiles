@@ -34,7 +34,7 @@
     {
         "defaults": 
         {
-            "colorScheme": "IBM 5153",
+            "colorScheme": "GitHub Dark",
             "experimental.retroTerminalEffect": false,
             "font": 
             {
@@ -60,19 +60,6 @@
                 "hidden": false,
                 "name": "Azure Cloud Shell",
                 "source": "Windows.Terminal.Azure"
-            },
-            {
-                "guid": "{0e3d6f6b-06bd-54dd-ab17-1c2d717fd2ff}",
-                "hidden": false,
-                "icon": "D:\\Linux\\02_VHDX\\Debian\\shortcut.ico",
-                "name": "Debian",
-                "source": "Microsoft.WSL"
-            },
-            {
-                "guid": "{5aaae128-b28d-5790-beda-46b4420ea5a0}",
-                "hidden": false,
-                "name": "Debian",
-                "source": "Microsoft.WSL"
             }
         ]
     },

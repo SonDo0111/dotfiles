@@ -12,3 +12,9 @@
     helper = 
     helper = !gh auth git-credential
 
+[user]
+    name = SonDo0111
+    email = thea73092@gmail.com
+
+[init]
+    defaultBranch = main

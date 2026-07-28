@@ -41,8 +41,8 @@ link_dotfile "$HOME/.bashrc"           "$REPO_ROOT/bash/.bashrc"
 # link_dotfile "$HOME/.cargo/config.toml" "$REPO_ROOT/cargo/config.toml"   # bat khi can
 
 # VSCodium native trong WSL (chi bat neu chuyen sang WSLg, khong can khi dung open-remote-wsl)
-# link_dotfile "$HOME/.config/VSCodium/User/settings.json"    "$REPO_ROOT/vscodium/settings.json"
-# link_dotfile "$HOME/.config/VSCodium/User/keybindings.json" "$REPO_ROOT/vscodium/keybindings.json"
+link_dotfile "$HOME/.config/VSCodium/User/settings.json"    "$REPO_ROOT/vscodium/settings.json"
+link_dotfile "$HOME/.config/VSCodium/User/keybindings.json" "$REPO_ROOT/vscodium/keybindings.json"
 
 echo ""
 echo "== Xac nhan lai =="
