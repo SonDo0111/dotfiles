@@ -1,36 +1,72 @@
 <#
 01-bootstrap.ps1
-Muc dich: chuan bi package manager truoc khi cai bat ky app nao.
+Muc dich: Chuan bi Package Managers (Winget, Scoop) va cac dependency loi (Git).
 Chay: PowerShell thuong (khong bat buoc Admin).
 #>
 
 $ErrorActionPreference = "Stop"
 
-Write-Host "== [01] Kiem tra winget ==" -ForegroundColor Cyan
-if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
-    Write-Warning "winget khong co san. Cai 'App Installer' tu Microsoft Store, hoac tai .msixbundle tu github.com/microsoft/winget-cli/releases roi chay lai script nay."
-    exit 1
-}
-winget --version
-
-Write-Host "== [01] Cai Scoop (khong can Admin) ==" -ForegroundColor Cyan
-if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
+Write-Host "== [01] Kiem tra va Sua chua Execution Policy ==" -ForegroundColor Cyan
+$currentPolicy = Get-ExecutionPolicy -Scope CurrentUser
+if ($currentPolicy -notin @("RemoteSigned", "Unrestricted", "Bypass")) {
+    Write-Host "  [Repair] Dang set ExecutionPolicy thanh RemoteSigned..." -ForegroundColor Yellow
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
-    Invoke-RestMethod get.scoop.sh | Invoke-Expression
 } else {
-    Write-Host "Scoop da cai san, bo qua."
+    Write-Host "  [Skip] ExecutionPolicy da hop le ($currentPolicy)." -ForegroundColor DarkGray
 }
 
-Write-Host "== [01] Them Scoop bucket 'extras' va 'nerd-fonts' ==" -ForegroundColor Cyan
-scoop bucket add extras 2>$null
-scoop bucket add nerd-fonts 2>$null
-
-Write-Host "== [01] Kiem tra Developer Mode (can cho buoc 04 - symlink khong dung Admin) ==" -ForegroundColor Cyan
-$devMode = Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" -Name "AllowDevelopmentWithoutDevLicense" -ErrorAction SilentlyContinue
-if (-not $devMode -or $devMode.AllowDevelopmentWithoutDevLicense -ne 1) {
-    Write-Warning "Developer Mode chua bat. Script 03-configure-windows.ps1 se tu bat no (can chay Admin + restart)."
+Write-Host "`n== [01] Kiem tra Winget ==" -ForegroundColor Cyan
+if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
+    # Catch & Repair: Thu goi App Installer URI de ep Windows Store mo trang cai dat
+    Write-Warning "Winget khong ton tai. Dang mo Microsoft Store de ban cai dat 'App Installer'..."
+    Start-Process "ms-windows-store://pdp/?ProductId=9NBLGGH4NNS1"
+    Write-Error "Vui long cai dat App Installer tu Store, sau do chay lai script nay."
+    exit 1
 } else {
-    Write-Host "Developer Mode da bat. OK." -ForegroundColor Green
+    $wingetVer = (winget --version)
+    Write-Host "  [OK] Winget dang chay (Version: $wingetVer)" -ForegroundColor Green
 }
 
-Write-Host "== [01] Xong. Tiep tuc: .\02-install-apps.ps1 ==" -ForegroundColor Green
+Write-Host "`n== [01] Kiem tra va Cai dat Scoop ==" -ForegroundColor Cyan
+if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
+    Write-Host "  [Repair] Dang cai dat Scoop..." -ForegroundColor Yellow
+    Invoke-RestMethod -Uri get.scoop.sh | Invoke-Expression
+} else {
+    Write-Host "  [Skip] Scoop da duoc cai dat." -ForegroundColor DarkGray
+}
+
+Write-Host "`n== [01] Kiem tra Dependency (Git) cho Scoop Buckets ==" -ForegroundColor Cyan
+if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
+    Write-Host "  [Repair] Scoop can Git de add bucket. Dang cai Git qua Winget..." -ForegroundColor Yellow
+    winget install --id Git.Git -e --accept-package-agreements --accept-source-agreements | Out-Null
+    
+    # Repair Path: Load lai bien moi truong PATH ngay trong phien hien tai de Scoop thay Git
+    $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+    Write-Host "  [OK] Da cai Git va cap nhat PATH." -ForegroundColor Green
+} else {
+    Write-Host "  [Skip] Git da san sang." -ForegroundColor DarkGray
+}
+
+Write-Host "`n== [01] Kiem tra va Them Scoop Buckets ==" -ForegroundColor Cyan
+# Catch & Repair: Thay vi 2>$null, ta doc danh sach bucket hien tai
+$existingBuckets = scoop bucket list 2>$null | Out-String
+$requiredBuckets = @("extras", "nerd-fonts")
+
+foreach ($bucket in $requiredBuckets) {
+    if ($existingBuckets -match $bucket) {
+        Write-Host "  [Skip] Bucket '$bucket' da ton tai." -ForegroundColor DarkGray
+    } else {
+        Write-Host "  [Repair] Dang them bucket '$bucket'..." -ForegroundColor Yellow
+        scoop bucket add $bucket
+    }
+}
+
+Write-Host "`n== [01] Kiem tra Developer Mode ==" -ForegroundColor Cyan
+$devMode = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" -Name "AllowDevelopmentWithoutDevLicense" -ErrorAction SilentlyContinue).AllowDevelopmentWithoutDevLicense
+if ($devMode -ne 1) {
+    Write-Host "  [Warning] Developer Mode chua bat. Script 03 se tu dong bat (Can Admin)." -ForegroundColor Yellow
+} else {
+    Write-Host "  [OK] Developer Mode da bat." -ForegroundColor Green
+}
+
+Write-Host "`n== [01] XONG. Tiep tuc: .\02-install-apps.ps1 ==" -ForegroundColor Green
