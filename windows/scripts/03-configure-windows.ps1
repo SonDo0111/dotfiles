@@ -25,11 +25,11 @@ foreach ($f in $features) {
 }
 
 # Bat verbose cho logout
-Write-Host "== Bat Verbose Status Message =="
-$systemPolicy = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"
-if (-not (Test-Path $systemPolicy)) { New-Item -Path $systemPolicy -Force | Out-Null }
-Set-ItemProperty -Path $systemPolicy `
-    -Name "verbosestatus" `-Value 1 -PropertyType DWORD -Force | Out-Null
+#Write-Host "== Bat Verbose Status Message =="
+#$systemPolicy = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"
+#if (-not (Test-Path $systemPolicy)) { New-Item -Path $systemPolicy -Force | Out-Null }
+#New-ItemProperty -Path $systemPolicy `
+#    -Name "verbosestatus" `-Value 1 -PropertyType DWORD -Force | Out-Null
 
 Write-Host "== [03] Dong bo UTC ==" -ForegroundColor Cyan
 New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation" `

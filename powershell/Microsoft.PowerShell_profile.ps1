@@ -1,16 +1,14 @@
-$moduleName = "Terminal-Icons"
-
 # Kiểm tra xem module đã tồn tại trên máy chưa
-if (!(Get-Module -ListAvailable -Name $moduleName)) {
-    Write-Host "[-] Chưa tìm thấy $moduleName. Bắt đầu quá trình cài đặt..." -ForegroundColor Cyan
+if (!(Get-Module -ListAvailable -Name 'Terminal-Icons')) {
+    Write-Host "[-] Terminal-Icons Not Found. Installing..." -ForegroundColor Cyan
     
     try {
         # Thực hiện cài đặt an toàn không cần quyền Admin
-        Install-Module -Name $moduleName -Scope CurrentUser -Force -AllowClobber -ErrorAction Stop
-        Write-Host "[+] Cài đặt $moduleName thành công!" -ForegroundColor Green
+        Install-Module -Name 'Terminal-Icons' -Scope CurrentUser -Force -AllowClobber -ErrorAction Stop
+        Write-Host "[+] Succesfullly Installed 'Terminal-Icons'!" -ForegroundColor Green
     }
     catch {
-        Write-Host "[x] Lỗi khi cài đặt $moduleName: $_" -ForegroundColor Red
+        Write-Host "[x] Error installing: $_" -ForegroundColor Red
     }
 } else {
     # Nếu đã cài đặt, do nothing (chỉ in log nhỏ, bạn có thể comment dòng Write-Host này lại nếu muốn hoàn toàn im lặng)
@@ -18,5 +16,5 @@ if (!(Get-Module -ListAvailable -Name $moduleName)) {
 }
 
 # Tự động nạp module vào phiên làm việc hiện tại
-Import-Module $moduleName
+Import-Module 'Terminal-Icons'
 Invoke-Expression (&starship init powershell)

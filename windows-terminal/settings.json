@@ -12,12 +12,12 @@
             "keys": "ctrl+c"
         },
         {
-            "id": "Terminal.PasteFromClipboard",
-            "keys": "ctrl+v"
-        },
-        {
             "id": "Terminal.FindText",
             "keys": "ctrl+shift+f"
+        },
+        {
+            "id": "Terminal.PasteFromClipboard",
+            "keys": "ctrl+v"
         },
         {
             "id": "Terminal.DuplicatePaneAuto",
@@ -65,6 +65,12 @@
                 "guid": "{0e3d6f6b-06bd-54dd-ab17-1c2d717fd2ff}",
                 "hidden": false,
                 "icon": "D:\\Linux\\02_VHDX\\Debian\\shortcut.ico",
+                "name": "Debian",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{5aaae128-b28d-5790-beda-46b4420ea5a0}",
+                "hidden": false,
                 "name": "Debian",
                 "source": "Microsoft.WSL"
             }
