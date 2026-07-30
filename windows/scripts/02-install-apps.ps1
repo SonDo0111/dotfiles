@@ -29,20 +29,37 @@ if (Test-Path $wingetList) {
 }
 
 # ---------------------------------------------------------
-# 2. SCOOP (CLI Tools)
+# 2. SCOOP (CLI Tools) - SMART PARSER
 # ---------------------------------------------------------
 Write-Host "`n== [02] Cai app qua Scoop ==" -ForegroundColor Cyan
 if (Test-Path $scoopList) {
-    # Catch-and-Repair: Dung .Trim() de xoa khoang trang/CRLF thua trong file txt
-    $scoopApps = Get-Content $scoopList | Where-Object { $_ -match '\S' } | ForEach-Object { $_.Trim() }
-    
-    foreach ($app in $scoopApps) {
-        if (Test-Path "$env:USERPROFILE\scoop\apps\$app") {
-            Write-Host "  [Skip] $app da cai san." -ForegroundColor DarkGray
-        } else {
-            Write-Host "  [Install] Cai dat $app..." -ForegroundColor Yellow
-            scoop install $app
+    $rawContent = Get-Content $scoopList -Raw
+    $scoopApps = @()
+
+    # Kiem tra xem file la JSON (tu 'scoop export') hay Text thuan
+    if ($rawContent.Trim().StartsWith("{")) {
+        Write-Host "  [Info] Nhan dien file Scoop la dinh dang JSON." -ForegroundColor DarkGray
+        $json = $rawContent | ConvertFrom-Json
+        # Lay danh sach ten app tu object JSON
+        if ($null -ne $json.apps) {
+            $scoopApps = $json.apps.Name
         }
+    } else {
+        Write-Host "  [Info] Nhan dien file Scoop la dinh dang Text thuan." -ForegroundColor DarkGray
+        $scoopApps = ($rawContent -split "`n") | Where-Object { $_ -match '\S' } | ForEach-Object { $_.Trim() }
+    }
+    
+    if ($scoopApps.Count -gt 0) {
+        foreach ($app in $scoopApps) {
+            if (Test-Path "$env:USERPROFILE\scoop\apps\$app") {
+                Write-Host "  [Skip] $app da cai san." -ForegroundColor DarkGray
+            } else {
+                Write-Host "  [Install] Cai dat $app..." -ForegroundColor Yellow
+                scoop install $app
+            }
+        }
+    } else {
+        Write-Warning "  Khong tim thay app nao trong file $scoopList."
     }
 } else {
     Write-Warning "  Chua co $scoopList -> Bo qua."

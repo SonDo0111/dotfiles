@@ -60,6 +60,24 @@
                 "hidden": false,
                 "name": "Azure Cloud Shell",
                 "source": "Windows.Terminal.Azure"
+            },
+            {
+                "guid": "{5bf1fa5b-054e-5d62-9000-1dd6c32d81c4}",
+                "hidden": false,
+                "name": "Debian",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{458068b2-2bd2-5886-8565-fe5e7298d510}",
+                "hidden": false,
+                "name": "Debian",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "hidden": false,
+                "name": "PowerShell",
+                "source": "Windows.Terminal.PowershellCore"
             }
         ]
     },
