@@ -6,31 +6,38 @@ Tao symlink tu vi tri config that (Windows) tro vao file trong repo dotfiles.
 $ErrorActionPreference = "Stop"
 $repoRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 
-function Set-DotfileLink {
+function Set-DotfileLink
+{
     param(
         [Parameter(Mandatory)] [string]$LinkPath,
         [Parameter(Mandatory)] [string]$TargetPath
     )
 
-    if (-not (Test-Path $TargetPath)) {
+    if (-not (Test-Path $TargetPath))
+    {
         Write-Warning "Target khong ton tai, bo qua: $TargetPath"
         return
     }
 
     $parent = Split-Path $LinkPath -Parent
-    if (-not (Test-Path $parent)) {
+    if (-not (Test-Path $parent))
+    {
         New-Item -ItemType Directory -Path $parent -Force | Out-Null
     }
 
-    if (Test-Path $LinkPath) {
+    if (Test-Path $LinkPath)
+    {
         $existing = Get-Item $LinkPath -Force
-        if ($existing.LinkType -eq "SymbolicLink") {
-            if ($existing.Target -eq $TargetPath) {
+        if ($existing.LinkType -eq "SymbolicLink")
+        {
+            if ($existing.Target -eq $TargetPath)
+            {
                 Write-Host "OK (da dung san): $LinkPath -> $TargetPath" -ForegroundColor DarkGray
                 return
             }
             Remove-Item $LinkPath -Force
-        } else {
+        } else
+        {
             # FIX BUG RENAME-ITEM O DAY: Chi lay ten file (Leaf)
             $newName = (Split-Path $LinkPath -Leaf) + ".bak-$(Get-Date -Format yyyyMMdd-HHmmss)"
             Rename-Item -Path $LinkPath -NewName $newName -Force
@@ -51,11 +58,14 @@ Set-DotfileLink -LinkPath "$HOME\.wslconfig"        -TargetPath "$repoRoot\WSL\.
 Write-Host "== [04] Windows Terminal ==" -ForegroundColor Cyan
 $wtStorePath    = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
 $wtPortablePath = "$env:LOCALAPPDATA\Microsoft\Windows Terminal\settings.json"
-if (Test-Path (Split-Path $wtStorePath -Parent)) {
+if (Test-Path (Split-Path $wtStorePath -Parent))
+{
     Set-DotfileLink -LinkPath $wtStorePath -TargetPath "$repoRoot\windows-terminal\settings.json"
-} elseif (Test-Path (Split-Path $wtPortablePath -Parent)) {
+} elseif (Test-Path (Split-Path $wtPortablePath -Parent))
+{
     Set-DotfileLink -LinkPath $wtPortablePath -TargetPath "$repoRoot\windows-terminal\settings.json"
-} else {
+} else
+{
     Write-Warning "Khong tim thay thu muc Windows Terminal."
 }
 
@@ -64,5 +74,11 @@ if (Test-Path (Split-Path $wtStorePath -Parent)) {
 # $vscodiumUserDir = "$env:APPDATA\VSCodium\User"
 # Set-DotfileLink -LinkPath "$vscodiumUserDir\settings.json"    -TargetPath "$repoRoot\vscodium\settings.json"
 # Set-DotfileLink -LinkPath "$vscodiumUserDir\keybindings.json" -TargetPath "$repoRoot\vscodium\keybindings.json"
+
+
+Write-Host "== [04] Zed ==" -ForegroundColor Cyan
+$zedUserDir = "$env:APPDATA\Zed"
+Set-DotfileLink -LinkPath "$zedUserDir\settings.json"    -TargetPath "$repoRoot\zed\settings.json"
+Set-DotfileLink -LinkPath "$zedUserDir\keymap.json" -TargetPath "$repoRoot\zed\keymap.json"
 
 Write-Host "`n== [04] Xong. Tiep tuc: .\06-vscodium-extensions.ps1 sau do .\05-restore-data.ps1 ==" -ForegroundColor Green

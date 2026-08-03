@@ -1,0 +1,194 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+    // =========================================================
+    // 1. CORE & SYSTEM (WSL, Telemetry, Autosave)
+    // =========================================================
+
+    "agent_servers": {
+        "github-copilot-cli": {
+            "type": "registry",
+        },
+        "cursor": {
+            "type": "registry",
+        },
+        "codex-acp": {
+            "type": "registry",
+        },
+        "claude-acp": {
+            "type": "registry",
+        },
+    },
+    "wsl_connections": [
+        {
+            "distro_name": "Debian",
+            "user": null,
+            "projects": [
+                { "paths": ["/home/debian/Project"] },
+                { "paths": ["/home/debian/Project/C++"] },
+            ],
+        },
+    ],
+    "telemetry": {
+        "enabled": false,
+        "opt_out": true,
+        "diagnostics": true,
+        "metrics": false,
+    },
+    "autosave": {
+        "after_delay": { "milliseconds": 1000 },
+    },
+    "cli_default_open_behavior": "existing_window",
+    "session": {
+        "restore_unsaved_buffers": true,
+    },
+
+    // =========================================================
+    // 2. UI, THEME & FONTS (Clean, High-Contrast, Minimalist)
+    // =========================================================
+
+    "theme": {
+        "mode": "dark",
+        "light": "GitHub Light",
+        "dark": "GitHub Dark", // Excellent contrast for C/C++ syntax
+    },
+    "icon_theme": "Material Icon Theme",
+
+    "ui_font_family": ".ZedSans",
+    "ui_font_size": 16,
+
+    // JetBrainsMono is the gold standard for systems programming
+    "buffer_font_family": "JetBrainsMono Nerd Font",
+    "buffer_font_size": 15,
+    "buffer_font_fallbacks": ["Consolas"],
+
+    // UI Cleanup (Taking the best from the minimalist config)
+    "scrollbar": { "show": "never" },
+    "tab_bar": { "show": true }, // Kept tabs ON so you don't get lost
+    "status_bar": { "experimental.show": true },
+    "indent_guides": {
+        "enabled": true,
+        "coloring": "indent_aware",
+    },
+    "centered_layout": {
+        "left_padding": 0.15,
+        "right_padding": 0.15,
+    },
+
+    // =========================================================
+    // 3. VIM MODE & EDITOR BEHAVIOR
+    // =========================================================
+
+    "vim_mode": true,
+    // CRITICAL FOR VIM: Shows relative numbers so you know how many lines to jump (e.g., '5j')
+    "relative_line_numbers": "enabled",
+    "gutter": {
+        "line_numbers": true,
+    },
+    // Which-key shows a popup of available shortcuts if you hesitate
+    "which_key": {
+        "delay_ms": 500,
+        "enabled": true,
+    },
+    "format_on_save": "on",
+    "tab_size": 4,
+    "hard_tabs": false, // Use spaces for C/C++ standard compliance
+    "colorize_brackets": true,
+
+    // =========================================================
+    // 4. TERMINAL & GIT
+    // =========================================================
+
+    "terminal": {
+        "dock": "bottom",
+        "font_family": "MesloLGM Nerd Font Mono",
+        "font_size": 16,
+        "show_count_badge": true,
+        // This allows you to type 'git commit' in the terminal and it opens a Zed tab!
+        "env": {
+            "EDITOR": "zed --wait",
+        },
+    },
+    "git": {
+        "inline_blame": {
+            "enabled": false, // Turned off by default to reduce visual noise, toggle when needed
+        },
+    },
+    "project_panel": {
+        "dock": "right", // Keeps your code on the left, closer to your eyes
+        "button": true,
+        "git_status": true,
+        "auto_fold_dirs": false,
+    },
+
+    // =========================================================
+    // 5. C/C++ & MULTI-LANGUAGE (LSP)
+    // =========================================================
+
+    "inlay_hints": {
+        "enabled": true, // Shows parameter names and 'auto' types in C++
+    },
+    "lsp": {
+        "clangd": {
+            "initialization_options": {
+                "fallbackFlags": ["-std=c++17"], // Forces modern C++ for single files
+            },
+        },
+    },
+    "languages": {
+        "Python": {
+            "format_on_save": "on",
+            "formatter": { "language_server": { "name": "ruff" } },
+        },
+        "TypeScript": {
+            "inlay_hints": {
+                "show_parameter_hints": false,
+                "show_other_hints": true,
+                "show_type_hints": true,
+            },
+        },
+    },
+    "file_types": {
+        "Dockerfile": ["Dockerfile", "Dockerfile.*"],
+        "JSON": ["json", "jsonc", "*.code-snippets"],
+    },
+
+    // =========================================================
+    // 6. AI & ASSISTANTS (Ready for when you need them)
+    // =========================================================
+    "show_edit_predictions": false,
+    "edit_predictions": {
+        "allow_data_collection": "no",
+    },
+    "agent": {
+        "sidebar_side": "right",
+        "dock": "right",
+    },
+    "language_models": {
+        "ollama": {
+            "api_url": "http://localhost:11434", // Ready for local, offline AI models
+        },
+    },
+
+    // =========================================================
+    // 7. FILE EXCLUSIONS (Hide build artifacts)
+    // =========================================================
+
+    "file_scan_exclusions": [
+        "**/.git",
+        "**/.DS_Store",
+        "**/*.o",
+        "**/*.out",
+        "**/*.exe",
+        "**/build",
+        "**/node_modules",
+        "**/.next",
+        "**/dist",
+    ],
+}
