@@ -44,7 +44,10 @@ link_dotfile "$HOME/.bashrc"           "$REPO_ROOT/bash/.bashrc"
 #link_dotfile "$HOME/.config/VSCodium/User/settings.json"    "$REPO_ROOT/vscodium/settings.json"
 #link_dotfile "$HOME/.config/VSCodium/User/keybindings.json" "$REPO_ROOT/vscodium/keybindings.json"
 
-echo ""
+
+echo "== Zed =="
+link_dotfile "$HOME/.config/zed/settings.json" "$REPO_ROOT/zed/settings.json"
+link_dotfile "$HOME/.config/zed/keymap.json" "$REPO_ROOT/zed/keymap.json"
 echo "== Xac nhan lai =="
 for f in "$HOME/.gitconfig" "$HOME/.bashrc"; do
     [ -e "$f" ] && ls -la "$f"

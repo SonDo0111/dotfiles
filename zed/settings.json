@@ -11,6 +11,7 @@
     // 1. CORE & SYSTEM (WSL, Telemetry, Autosave)
     // =========================================================
 
+    "ui_font_weight": 400.0,
     "agent_servers": {
         "github-copilot-cli": {
             "type": "registry",
@@ -25,19 +26,17 @@
             "type": "registry",
         },
     },
-    "wsl_connections": [
-        {
-            "distro_name": "Debian",
-            "user": null,
-            "projects": [
-                { "paths": ["/home/debian/Project"] },
-                { "paths": ["/home/debian/Project/C++"] },
-            ],
-        },
-    ],
+    // "wsl_connections": [
+    //     {
+    //         "distro_name": "Debian",
+    //         "user": null,
+    //         "projects": [
+    //             { "paths": ["/home/debian/Project"] },
+    //             { "paths": ["/home/debian/Project/C++"] },
+    //         ],
+    //     },
+    // ],
     "telemetry": {
-        "enabled": false,
-        "opt_out": true,
         "diagnostics": true,
         "metrics": false,
     },
@@ -60,13 +59,13 @@
     },
     "icon_theme": "Material Icon Theme",
 
-    "ui_font_family": ".ZedSans",
-    "ui_font_size": 16,
+    "ui_font_family": "Inter 18pt",
+    "ui_font_size": 18.0,
 
     // JetBrainsMono is the gold standard for systems programming
     "buffer_font_family": "JetBrainsMono Nerd Font",
-    "buffer_font_size": 15,
-    "buffer_font_fallbacks": ["Consolas"],
+    "buffer_font_size": 16.0,
+    "buffer_font_fallbacks": ["MesloLGM Nerd Font"],
 
     // UI Cleanup (Taking the best from the minimalist config)
     "scrollbar": { "show": "never" },
