@@ -43,13 +43,14 @@ link_dotfile "$HOME/.bashrc"           "$REPO_ROOT/bash/.bashrc"
 # VSCodium native trong WSL (chi bat neu chuyen sang WSLg, khong can khi dung open-remote-wsl)
 #link_dotfile "$HOME/.config/VSCodium/User/settings.json"    "$REPO_ROOT/vscodium/settings.json"
 #link_dotfile "$HOME/.config/VSCodium/User/keybindings.json" "$REPO_ROOT/vscodium/keybindings.json"
-
+echo "== Starship =="
+link_dotfile "$HOME/.config/starship.toml" "$REPO_ROOT/starship/starship.toml"
 
 echo "== Zed =="
 link_dotfile "$HOME/.config/zed/settings.json" "$REPO_ROOT/zed/settings.json"
 link_dotfile "$HOME/.config/zed/keymap.json" "$REPO_ROOT/zed/keymap.json"
 echo "== Xac nhan lai =="
-for f in "$HOME/.gitconfig" "$HOME/.bashrc"; do
+for f in "$HOME/.gitconfig" "$HOME/.bashrc" "$HOME/.config/starship.toml" "$HOME/.config/zed/settings.json" "$HOME/.config/zed/keymap.json"; do
     [ -e "$f" ] && ls -la "$f"
 done
 
