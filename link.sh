@@ -46,11 +46,14 @@ link_dotfile "$HOME/.bashrc"           "$REPO_ROOT/bash/.bashrc"
 echo "== Starship =="
 link_dotfile "$HOME/.config/starship.toml" "$REPO_ROOT/starship/starship.toml"
 
+echo "== Mise =="
+link_dotfile "$HOME/.config/mise/config.toml" "$REPO_ROOT/mise/config.toml"
+
 echo "== Zed =="
 link_dotfile "$HOME/.config/zed/settings.json" "$REPO_ROOT/zed/settings.json"
 link_dotfile "$HOME/.config/zed/keymap.json" "$REPO_ROOT/zed/keymap.json"
 echo "== Xac nhan lai =="
-for f in "$HOME/.gitconfig" "$HOME/.bashrc" "$HOME/.config/starship.toml" "$HOME/.config/zed/settings.json" "$HOME/.config/zed/keymap.json"; do
+for f in "$HOME/.gitconfig" "$HOME/.bashrc" "$HOME/.config/starship.toml" "$HOME/.config/mise/config.toml" "$HOME/.config/zed/settings.json" "$HOME/.config/zed/keymap.json"; do
     [ -e "$f" ] && ls -la "$f"
 done
 
