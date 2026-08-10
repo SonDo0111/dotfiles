@@ -29,11 +29,8 @@
         {
             "distro_name": "Debian",
             "user": null,
-            "projects": [
-                { "paths": ["/home/debian/Project"] },
-                { "paths": ["/home/debian/Project/C++"] },
-            ],
-        },
+            "projects": []
+        }
     ],
     "telemetry": {
         "diagnostics": true,
