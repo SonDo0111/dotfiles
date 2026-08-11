@@ -152,6 +152,10 @@
                 "show_type_hints": true,
             },
         },
+        "LaTeX": {
+            "language_servers": ["texlab"],
+            "soft_wrap":"editor_width",
+        }
     },
     "file_types": {
         "Dockerfile": ["Dockerfile", "Dockerfile.*"],
