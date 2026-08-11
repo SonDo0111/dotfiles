@@ -154,8 +154,8 @@
         },
         "LaTeX": {
             "language_servers": ["texlab"],
-            "soft_wrap":"editor_width",
-        }
+            "soft_wrap": "editor_width",
+        },
     },
     "file_types": {
         "Dockerfile": ["Dockerfile", "Dockerfile.*"],
@@ -165,7 +165,7 @@
     // =========================================================
     // 6. AI & ASSISTANTS (Ready for when you need them)
     // =========================================================
-    "show_edit_predictions": false,
+    "show_edit_predictions": true,
     "edit_predictions": {
         "allow_data_collection": "no",
     },
