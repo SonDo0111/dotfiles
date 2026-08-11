@@ -74,7 +74,13 @@ if (Test-Path (Split-Path $wtStorePath -Parent))
 # $vscodiumUserDir = "$env:APPDATA\VSCodium\User"
 # Set-DotfileLink -LinkPath "$vscodiumUserDir\settings.json"    -TargetPath "$repoRoot\vscodium\settings.json"
 # Set-DotfileLink -LinkPath "$vscodiumUserDir\keybindings.json" -TargetPath "$repoRoot\vscodium\keybindings.json"
+Write-Host "== [04] Starship ==" -ForegroundColor Cyan
+$starshipConfigPath = "$env:USERPROFILE\.config\starship.toml"
+Set-DotfileLink -LinkPath $starshipConfigPath -TargetPath "$repoRoot\starship\starship.toml"
 
+# Write-Host "== [04] Mise ==" -ForegroundColor Cyan
+# $miseConfigPath = "$env:USERPROFILE\.config\mise"
+# Set-DotfileLink -LinkPath $miseConfigPath -TargetPath "$repoRoot\mise\mise.toml"
 
 Write-Host "== [04] Zed ==" -ForegroundColor Cyan
 $zedUserDir = "$env:APPDATA\Zed"
