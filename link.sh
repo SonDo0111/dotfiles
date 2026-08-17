@@ -35,10 +35,11 @@ link_dotfile() {
     echo "Linked: $link_path -> $target_path"
 }
 
-echo "== Git / bash / cargo =="
+echo "== Git / bash / cargo / latex =="
 link_dotfile "$HOME/.gitconfig"        "$REPO_ROOT/git/.gitconfig-linux"
 link_dotfile "$HOME/.bashrc"           "$REPO_ROOT/bash/.bashrc"
 # link_dotfile "$HOME/.cargo/config.toml" "$REPO_ROOT/cargo/config.toml"   # bat khi can
+link_dotfile "$HOME/.latexmkrc"        "$REPO_ROOT/latexmk/.latexmkrc"
 
 # VSCodium native trong WSL (chi bat neu chuyen sang WSLg, khong can khi dung open-remote-wsl)
 #link_dotfile "$HOME/.config/VSCodium/User/settings.json"    "$REPO_ROOT/vscodium/settings.json"

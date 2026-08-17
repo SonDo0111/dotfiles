@@ -29,8 +29,8 @@
         {
             "distro_name": "Debian",
             "user": null,
-            "projects": []
-        }
+            "projects": [],
+        },
     ],
     "telemetry": {
         "diagnostics": true,
@@ -117,7 +117,7 @@
         },
     },
     "project_panel": {
-        "hide_hidden": true,
+        "hide_hidden": false,
         "dock": "right", // Keeps your code on the left, closer to your eyes
         "button": true,
         "git_status": true,
