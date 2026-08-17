@@ -101,6 +101,7 @@
     // =========================================================
 
     "terminal": {
+        "shell": "system",
         "dock": "bottom",
         "font_family": "MesloLGM Nerd Font Mono",
         "font_size": 16,
@@ -167,6 +168,7 @@
         "allow_data_collection": "no",
     },
     "agent": {
+        "terminal_init_command": "",
         "sidebar_side": "right",
         "dock": "right",
     },
