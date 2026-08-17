@@ -29,8 +29,8 @@
         {
             "distro_name": "Debian",
             "user": null,
-            "projects": []
-        }
+            "projects": [],
+        },
     ],
     "telemetry": {
         "diagnostics": true,
