@@ -137,6 +137,32 @@
                 "fallbackFlags": ["-std=c++17"], // Forces modern C++ for single files
             },
         },
+        "texlab": {
+            "initialization_options": {
+                "build": {
+                    "executable": "latexmk",
+                    "args": [
+                        "-pdf",
+                        "-lualatex",
+                        "-synctex=1",
+                        "-interaction=nonstopmode",
+                        "%f",
+                    ],
+                    "onSave": true,
+                    "forwardSearchAfter": true,
+                },
+                "fowardSearch": {
+                    "executable": "perl",
+                    "args": [
+                        "-e",
+                        "my ($f,$l,$p)=@ARGV; if ($^O eq 'MSWin32') { system('start \"\" SumatraPDF -reuse-instance -forward-search \"'.$f.'\" '.$l.' \"'.$p.'\"'); } else { system('okular --unique \"'.$p.'#src:'.$l.$f.'\" &'); }",
+                        "%f",
+                        "%l",
+                        "%p",
+                    ],
+                },
+            },
+        },
     },
     "languages": {
         "Python": {
@@ -163,7 +189,7 @@
     // =========================================================
     // 6. AI & ASSISTANTS (Ready for when you need them)
     // =========================================================
-    "show_edit_predictions": false,
+    "show_edit_predictions": true,
     "edit_predictions": {
         "allow_data_collection": "no",
     },
