@@ -5,7 +5,7 @@ $biber = 'biber %O %S';
 $clean_ext = 'synctex.gz run.xml bcf fdb_latexmk fls';
 
 if ($^O eq 'MSWin32') {
-    $pdf_previewer = 'start "" "C:/Users/Admin/AppData/Local/SumatraPDF/SumatraPDF.exe" -reuse-instance %O %S';
+    $pdf_previewer = 'start "" "SumatraPDF.exe" -reuse-instance %O %S';
     $pdf_update_method = 3;
 } else {
     $pdf_previewer = 'okular --unique %O %S#src:%L%S &';
