@@ -137,6 +137,32 @@
                 "fallbackFlags": ["-std=c++17"], // Forces modern C++ for single files
             },
         },
+        "texlab": {
+            "settings": {
+                "texlab": {
+                    "build": {
+                        "executable": "latexmk",
+                        "args": ["%f"],
+                        "onSave": true,
+                        "fowardSearchAfter": true,
+                    },
+                },
+            },
+        },
+    },
+    "linux": {
+        "lsp": {
+            "texlab": {
+                "settings": {
+                    "texlab": {
+                        "fowardSearch": {
+                            "executable": "okular",
+                            "args": ["--unique", "%p#src:%l%f"],
+                        },
+                    },
+                },
+            },
+        },
     },
     "languages": {
         "Python": {
