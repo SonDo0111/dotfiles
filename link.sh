@@ -26,7 +26,8 @@ link_dotfile() {
         fi
         rm "$link_path"
     elif [ -e "$link_path" ]; then
-        local backup="${link_path}.bak-$(date +%Y%m%d-%H%M%S)"
+        local backup
+        backup="${link_path}.bak-$(date +%Y%m%d-%H%M%S)"
         mv "$link_path" "$backup"
         echo "Da backup file cu: $backup"
     fi
@@ -54,7 +55,7 @@ echo "== Zed =="
 link_dotfile "$HOME/.config/zed/settings.json" "$REPO_ROOT/zed/settings.json"
 link_dotfile "$HOME/.config/zed/keymap.json" "$REPO_ROOT/zed/keymap.json"
 echo "== Xac nhan lai =="
-for f in "$HOME/.gitconfig" "$HOME/.bashrc" "$HOME/.config/starship.toml" "$HOME/.config/mise/config.toml" "$HOME/.config/zed/settings.json" "$HOME/.config/zed/keymap.json"; do
+for f in "$HOME/.gitconfig" "$HOME/.bashrc" "$HOME/.config/starship.toml" "$HOME/.config/mise/config.toml" "$HOME/.config/zed/settings.json" "$HOME/.config/zed/keymap.json" "$HOME/.latexmkrc"; do
     [ -e "$f" ] && ls -la "$f"
 done
 
