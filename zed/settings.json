@@ -62,6 +62,10 @@
     "buffer_font_family": "JetBrainsMono Nerd Font",
     "buffer_font_size": 15,
     "buffer_font_fallbacks": ["Consolas"],
+    "buffer_font_features": {
+        "liga": false,
+        "calt": false,
+    },
 
     // UI Cleanup (Taking the best from the minimalist config)
     "scrollbar": { "show": "never" },
