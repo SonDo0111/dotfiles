@@ -111,5 +111,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-eval "$(mise activate bash)"
 eval "$(starship init bash)"
+eval "$(~/.local/bin/mise activate bash)"
+export PATH=$HOME/.local/bin:$PATH
