@@ -56,11 +56,11 @@
     "icon_theme": "Material Icon Theme",
 
     "ui_font_family": ".ZedSans",
-    "ui_font_size": 16,
+    "ui_font_size": 15,
 
     // JetBrainsMono is the gold standard for systems programming
     "buffer_font_family": "JetBrainsMono Nerd Font",
-    "buffer_font_size": 15,
+    "buffer_font_size": 14,
     "buffer_font_fallbacks": ["Consolas"],
     "buffer_font_features": {
         "liga": false,
@@ -200,7 +200,7 @@
     "agent": {
         "terminal_init_command": "",
         "sidebar_side": "right",
-        "dock": "right",
+        "dock": "left",
     },
     "language_models": {
         "ollama": {
