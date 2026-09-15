@@ -57,6 +57,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
+    eval "$(starship init bash)"
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
@@ -111,6 +112,5 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-eval "$(starship init bash)"
 eval "$(~/.local/bin/mise activate bash)"
 export PATH=$HOME/.local/bin:$PATH
