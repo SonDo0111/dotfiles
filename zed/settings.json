@@ -37,7 +37,7 @@
         "metrics": false,
     },
     "autosave": {
-        "after_delay": { "milliseconds": 1000 },
+        "after_delay": { "milliseconds": 5000 },
     },
     "cli_default_open_behavior": "existing_window",
     "session": {
