@@ -55,8 +55,8 @@
     },
     "icon_theme": "Material Icon Theme",
 
-    "ui_font_family": ".ZedSans",
-    "ui_font_size": 15,
+    "ui_font_family": "Inter",
+    "ui_font_size": 14.0,
 
     // JetBrainsMono is the gold standard for systems programming
     "buffer_font_family": "JetBrainsMono Nerd Font",
@@ -153,6 +153,11 @@
                 },
             },
         },
+        "markdownlint": {
+            "settings": {
+                "MD013": false,
+            },
+        },
     },
     "linux": {
         "lsp": {
@@ -225,8 +230,12 @@
     ],
     // 8.MARKDOWN CONFIGURATION
     "markdown_preview": {
-        "theme": "GitHub Dark Tritanopia",
+        "theme": "GitHub Dark Dimmed",
         "code_font_family": "JetBrainsMono Nerd Font Mono",
         "font_size": 14,
+        "font_family": "Inter Display",
+        "limit_content_width": true,
+        "max_width": 880,
+        "open_markdown_files_in_preview": true,
     },
 }
