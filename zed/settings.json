@@ -51,7 +51,7 @@
     "theme": {
         "mode": "dark",
         "light": "GitHub Light",
-        "dark": "GitHub Dark", // Excellent contrast for C/C++ syntax
+        "dark": "GitHub Dark Tritanopia", // Excellent contrast for C/C++ syntax
     },
     "icon_theme": "Material Icon Theme",
 
