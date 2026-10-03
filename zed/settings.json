@@ -56,11 +56,11 @@
     "icon_theme": "Material Icon Theme",
 
     "ui_font_family": "Inter",
-    "ui_font_size": 14.0,
+    "ui_font_size": 15.0,
 
     // JetBrainsMono is the gold standard for systems programming
     "buffer_font_family": "JetBrainsMono Nerd Font",
-    "buffer_font_size": 14,
+    "buffer_font_size": 15,
     "buffer_font_fallbacks": ["Consolas"],
     "buffer_font_features": {
         "liga": false,
@@ -203,8 +203,10 @@
         "allow_data_collection": "no",
     },
     "agent": {
+        "threads_sidebar": {
+            "position": "right"
+        },
         "terminal_init_command": "",
-        "sidebar_side": "right",
         "dock": "left",
     },
     "language_models": {
