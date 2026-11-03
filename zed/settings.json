@@ -12,6 +12,9 @@
     // =========================================================
 
     "agent_servers": {
+        "gemini": {
+            "type": "registry"
+        },
         "github-copilot-cli": {
             "type": "registry",
         },
@@ -37,7 +40,7 @@
         "metrics": false,
     },
     "autosave": {
-        "after_delay": { "milliseconds": 5000 },
+        "after_delay": { "milliseconds": 1000 },
     },
     "cli_default_open_behavior": "existing_window",
     "session": {
@@ -204,7 +207,7 @@
     },
     "agent": {
         "threads_sidebar": {
-            "position": "right"
+            "position": "right",
         },
         "terminal_init_command": "",
         "dock": "left",
@@ -238,6 +241,6 @@
         "font_family": "Inter Display",
         "limit_content_width": true,
         "max_width": 880,
-        "open_markdown_files_in_preview": true,
+        "open_markdown_files_in_preview": false,
     },
 }

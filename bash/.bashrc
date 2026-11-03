@@ -117,3 +117,4 @@ export PATH=$HOME/.local/bin:$PATH
 export MANPATH=/usr/local/texlive/2026/texmf-dist/doc/man:$MANPATH
 export INFOPATH=/usr/local/texlive/2026/texmf-dist/doc/info:$INFOPATH
 export PATH=/usr/local/texlive/2026/bin/x86_64-linux:$PATH
+eval "$(uvx --generate-shell-completion bash)"
